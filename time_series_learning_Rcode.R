@@ -34,3 +34,6 @@ library(astsa)
 plot( jj, type="o", pch =20)
 Tm = as.vector( time(jj) )
 Qr = as.factor( cycle(jj) )
+
+out = lm( log(jj) ~ Tm + Qr -1 )
+summary(out)
