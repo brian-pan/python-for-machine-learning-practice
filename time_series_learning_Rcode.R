@@ -41,3 +41,16 @@ summary(out)
 exp( .25*out$coefficients["Tm"] + out$coefficients["Qr4"] - out$coeff["Qr3"] ) - 1
 plot(jj, main ="Original"); lines( Tm, exp( fitted(out) ), col = 2 )
 plot( log(jj), main ="Transformed"); lines( Tm, fitted(out), col = 2 )
+
+plot(out$residuals, type = 'o', pch = 20)
+acf(out$residuals)
+
+library(tidyverse)
+read_csv( url( "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv" ), skip = 1, na = "***"  ) %>% 
+  pivot_longer( "Jan":"Dec", names_to = "Month", values_to = "Temp") %>% 
+  drop_na(Temp) %>% 
+  # uncomment below to check data 
+  # View() 
+  pull( "Temp" ) %>% 
+  ts( start = c(1880,1), frequency = 12 ) -> temp
+plot( temp ) 
