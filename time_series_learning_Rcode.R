@@ -37,3 +37,7 @@ Qr = as.factor( cycle(jj) )
 
 out = lm( log(jj) ~ Tm + Qr -1 )
 summary(out)
+
+exp( .25*out$coefficients["Tm"] + out$coefficients["Qr4"] - out$coeff["Qr3"] ) - 1
+plot(jj, main ="Original"); lines( Tm, exp( fitted(out) ), col = 2 )
+plot( log(jj), main ="Transformed"); lines( Tm, fitted(out), col = 2 )
