@@ -18,3 +18,13 @@ plot(marriages, type='o', pch=20)
 acf(marriages)
 # Use the ```window``` function to extract a subset of the series from Jan 1990 till Dec 2000, and plot it.
 window( marriages, start = c(1990,1), end = c(2000, 12) )
+
+N=500
+W = ts(rnorm(N))
+acf(W, main = "")
+
+R = cumsum(W)
+acf(R)
+
+X = W + c( 0, W[-N])
+acf(X)
