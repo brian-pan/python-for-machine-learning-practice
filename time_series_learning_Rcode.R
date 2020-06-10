@@ -28,3 +28,9 @@ acf(R)
 
 X = W + c( 0, W[-N])
 acf(X)
+
+#2
+library(astsa)
+plot( jj, type="o", pch =20)
+Tm = as.vector( time(jj) )
+Qr = as.factor( cycle(jj) )
