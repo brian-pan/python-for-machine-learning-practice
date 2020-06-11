@@ -54,3 +54,11 @@ read_csv( url( "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv"
   pull( "Temp" ) %>% 
   ts( start = c(1880,1), frequency = 12 ) -> temp
 plot( temp ) 
+
+plot(temp)
+stats::filter(temp, c(.5, rep(1,99), .5)/100) %>% 
+  lines( x = time(temp), y = ., type = "l", lwd = 2, col = 2 )
+
+# Fit cubic trend
+Tm = as.vector(time(temp)); Tm2 = Tm^2; Tm3 = Tm^3
+out = lm( temp ~ Tm + Tm2 + Tm3  )
