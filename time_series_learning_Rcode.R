@@ -62,3 +62,8 @@ stats::filter(temp, c(.5, rep(1,99), .5)/100) %>%
 # Fit cubic trend
 Tm = as.vector(time(temp)); Tm2 = Tm^2; Tm3 = Tm^3
 out = lm( temp ~ Tm + Tm2 + Tm3  )
+
+# Create predictions and find first time for which it is > 2
+new_Tm = tail(Tm,1) + cumsum( rep(1/12, 500 ) )
+pred = predict(out, newdata = data.frame(Tm = new_Tm, Tm2 = new_Tm^2, Tm3 = new_Tm^3) )
+new_Tm[ which(pred>2) ] %>% head(1)
