@@ -67,3 +67,9 @@ out = lm( temp ~ Tm + Tm2 + Tm3  )
 new_Tm = tail(Tm,1) + cumsum( rep(1/12, 500 ) )
 pred = predict(out, newdata = data.frame(Tm = new_Tm, Tm2 = new_Tm^2, Tm3 = new_Tm^3) )
 new_Tm[ which(pred>2) ] %>% head(1)
+
+# Plot
+plot(temp, ylim = c(-1, 2.3), xlim = range( c(Tm,new_Tm)))
+abline(h=2, lty = 2, col = 2)
+lines( Tm, out$fitted, type = "l", col = 2)
+lines( new_Tm, pred, type = "l", col = 2)
