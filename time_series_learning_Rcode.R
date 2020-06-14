@@ -92,3 +92,7 @@ V_X = var(marriages)
 V_T = var(dcmp$trend, na.rm = T)
 V_S = var(dcmp$seasonal)
 V_R = var(dcmp$random, na.rm = T)
+
+V_T/V_X 
+V_S/V_X 
+V_R/V_X 
