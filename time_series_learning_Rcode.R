@@ -102,3 +102,10 @@ max(0, 1 - V_R / var( dcmp$trend + dcmp$random, na.rm = T ) )
 
 #F_S
 max(0, 1-V_R / var( dcmp$seasonal + dcmp$random, na.rm = T ))
+
+
+#3
+n=100
+x = stats::filter( rnorm(n), c(0,-.9), method = "recursive")
+par(mfrow=c(1,2))
+plot(x); acf(x, main = "")
