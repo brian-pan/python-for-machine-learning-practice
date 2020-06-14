@@ -123,3 +123,10 @@ plot(x); acf(x, main = "")
 x = arima.sim( model = list( ar = c(.75, -.5) ), n )
 par(mfrow=c(1,2))
 plot(x); acf(x, main = "")
+
+psi = ARMAtoMA( ar = c(.75,-.5), lag.max = 50)
+plot( psi, type = "h" )
+# Repeat the previous steps
+x = filter( rnorm(n), c(.75, .5), method = "recursive")
+par(mfrow=c(1,2))
+plot(x); acf(x, main = "")
