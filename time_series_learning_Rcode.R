@@ -73,3 +73,14 @@ plot(temp, ylim = c(-1, 2.3), xlim = range( c(Tm,new_Tm)))
 abline(h=2, lty = 2, col = 2)
 lines( Tm, out$fitted, type = "l", col = 2)
 lines( new_Tm, pred, type = "l", col = 2)
+
+
+read_csv( "ontario_marriages.csv" ) %>%  
+  filter(YEAR >= 1980 ) %>% 
+  group_by(YEAR, MONTH) %>% 
+  summarise(COUNT = sum(COUNT)) %>% 
+  arrange(YEAR, MONTH) %>%  
+  pull(COUNT) %>% 
+  ts( start=c(1980,1), frequency=12) -> marriages
+
+plot(marriages, type='o', pch=20)
