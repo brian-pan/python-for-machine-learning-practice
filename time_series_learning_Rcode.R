@@ -119,3 +119,7 @@ n = 1000
 par(mfrow=c(1,2))
 x = filter( rnorm(n), c(.75, -.5), method = "recursive")
 plot(x); acf(x, main = "")
+# ar simulate (method 2)
+x = arima.sim( model = list( ar = c(.75, -.5) ), n )
+par(mfrow=c(1,2))
+plot(x); acf(x, main = "")
