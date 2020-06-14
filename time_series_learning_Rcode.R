@@ -96,3 +96,9 @@ V_R = var(dcmp$random, na.rm = T)
 V_T/V_X 
 V_S/V_X 
 V_R/V_X 
+
+#F_T 
+max(0, 1 - V_R / var( dcmp$trend + dcmp$random, na.rm = T ) )
+
+#F_S
+max(0, 1-V_R / var( dcmp$seasonal + dcmp$random, na.rm = T ))
