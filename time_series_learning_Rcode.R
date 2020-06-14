@@ -109,3 +109,13 @@ n=100
 x = stats::filter( rnorm(n), c(0,-.9), method = "recursive")
 par(mfrow=c(1,2))
 plot(x); acf(x, main = "")
+
+# ma
+x_ma = stats::filter( x, rep(1/4,4), side = 1 )
+plot(x_ma); acf(x_ma, main = "", na.action = na.pass )
+
+# ar simulate
+n = 1000
+par(mfrow=c(1,2))
+x = filter( rnorm(n), c(.75, -.5), method = "recursive")
+plot(x); acf(x, main = "")
