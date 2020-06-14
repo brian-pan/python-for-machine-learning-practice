@@ -84,3 +84,6 @@ read_csv( "ontario_marriages.csv" ) %>%
   ts( start=c(1980,1), frequency=12) -> marriages
 
 plot(marriages, type='o', pch=20)
+
+dcmp = decompose(marriages)
+plot(dcmp)
