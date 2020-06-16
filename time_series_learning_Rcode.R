@@ -171,3 +171,13 @@ plot( h, ACF, type = "h", main = "(b)" ); abline(h=0, lty=2)
 
 ACF = ARMAacf( ar = c(1.2, -.85), lag.max = h_max )
 plot( h, ACF, type = "h", main = "(c)" ); abline(h=0, lty=2)
+
+
+x_AR = arima.sim( list(ar=.6), 100)
+x_MA = arima.sim( list(ma=.9), 100)
+x_ARMA = arima.sim( list(ar=.6, ma=.9), 100)
+
+par(mfrow=c(1,2))
+acf(x_AR, ylim = c(-1,1)); pacf(x_AR, ylim = c(-1,1))
+acf(x_MA, ylim = c(-1,1)); pacf(x_MA, ylim = c(-1,1))
+acf(x_ARMA, ylim = c(-1,1)); pacf(x_ARMA, ylim = c(-1,1))
