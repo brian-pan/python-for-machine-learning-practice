@@ -159,3 +159,15 @@ plot(x); acf(x, main = "")
 # ARMA to AR function
 Pi = astsa::ARMAtoAR( ma = c(.75, -.5), lag.max = 50)
 plot( Pi, type = "h" )
+
+
+#4
+h_max = 30; h = 0:h_max
+ACF = ARMAacf( ar = c(-1.6, -.64), lag.max = h_max )
+plot( h, ACF, type = "h", main = "(a)" ); abline(h=0, lty=2)
+
+ACF = ARMAacf( ar = c(.4,.45), lag.max = h_max )
+plot( h, ACF, type = "h", main = "(b)" ); abline(h=0, lty=2)
+
+ACF = ARMAacf( ar = c(1.2, -.85), lag.max = h_max )
+plot( h, ACF, type = "h", main = "(c)" ); abline(h=0, lty=2)
