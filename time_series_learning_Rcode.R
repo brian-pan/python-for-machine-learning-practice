@@ -181,3 +181,9 @@ par(mfrow=c(1,2))
 acf(x_AR, ylim = c(-1,1)); pacf(x_AR, ylim = c(-1,1))
 acf(x_MA, ylim = c(-1,1)); pacf(x_MA, ylim = c(-1,1))
 acf(x_ARMA, ylim = c(-1,1)); pacf(x_ARMA, ylim = c(-1,1))
+
+X = arima.sim( list(ar=.75), 1000)
+Y = arima.sim( list(ar=-.75), 1000)
+Z = X + Y
+par(mfrow = c(1,2))
+acf(Z); pacf(Z)
