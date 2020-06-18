@@ -214,3 +214,9 @@ my_pred - as.numeric(pred$pred)
 (my_se = sqrt( gamma0 * ( 1 - sum( phi_100 * theor_acf[-1] ) ) ))
 
 my_se - as.numeric(pred$se)
+
+library(forecast)
+(fore = forecast(out, h = 30))
+plot(fore)
+
+sqrt( var(x) )*1.96
