@@ -194,3 +194,13 @@ Y = arima.sim( list(ma=-.75), 1000)
 Z = X + Y
 par(mfrow = c(1,2))
 acf(Z); pacf(Z)
+
+
+#5
+(out = arima(x, order = c(1,0,1), include.mean = F) )
+(pred= predict(out, n.ahead = 1))
+
+phi = out$coef[1]; theta = out$coef[2]
+theor_acf = ARMAacf(ar = phi, ma = theta, lag.max = 100)
+DL = acf2AR( theor_acf )
+phi_100 = DL[100,]
