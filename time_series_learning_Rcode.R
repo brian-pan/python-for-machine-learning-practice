@@ -204,3 +204,13 @@ phi = out$coef[1]; theta = out$coef[2]
 theor_acf = ARMAacf(ar = phi, ma = theta, lag.max = 100)
 DL = acf2AR( theor_acf )
 phi_100 = DL[100,]
+
+(my_pred = sum( phi_100 * rev(x) ))
+
+my_pred - as.numeric(pred$pred)
+
+(gamma0 = (1 + 2*phi*theta + theta^2) /(1-phi^2)*out$sigma2)
+(my_se = sqrt( gamma0 * prod( 1 -  diag(DL)^2 ) ))
+(my_se = sqrt( gamma0 * ( 1 - sum( phi_100 * theor_acf[-1] ) ) ))
+
+my_se - as.numeric(pred$se)
