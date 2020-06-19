@@ -220,3 +220,15 @@ library(forecast)
 plot(fore)
 
 sqrt( var(x) )*1.96
+
+
+#6
+library(astsa)
+library(magrittr)
+plot(cmort)
+
+## Yule Walker
+fit_yw = ar.yw(cmort, order.max = 2)
+## Linear Regression
+p = 2 # AR order
+n = length(cmort) # series length
