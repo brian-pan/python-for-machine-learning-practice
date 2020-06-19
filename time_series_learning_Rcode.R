@@ -238,3 +238,20 @@ for(i in 1:p){
   X[,i] = cmort[(p+1-i):(n-i)] # lagged values of Y (by lag i)
 }
 fit_lm = lm(Y ~ X)
+
+## (a) 
+
+# AR coef's
+fit_yw$ar
+fit_lm$coefficients[-1]
+
+# Series mean \mu
+fit_yw$x.mean
+# corresponding intercept (see SS p.103)
+fit_yw$x.mean * ( 1 - sum(fit_yw$ar) )
+# lm intercept
+fit_lm$coef[1]
+
+# sigma_w^2
+fit_yw$var.pred  
+sigma(fit_lm)^2
