@@ -232,3 +232,9 @@ fit_yw = ar.yw(cmort, order.max = 2)
 ## Linear Regression
 p = 2 # AR order
 n = length(cmort) # series length
+Y = cmort[(p+1):n] # IV 
+X = matrix(0,(n-p),p) # DVs placeholder
+for(i in 1:p){
+  X[,i] = cmort[(p+1-i):(n-i)] # lagged values of Y (by lag i)
+}
+fit_lm = lm(Y ~ X)
