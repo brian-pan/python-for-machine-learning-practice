@@ -272,3 +272,9 @@ for(i in 1:5){
   plot(X); acf(X); pacf(X)
   print( arima(X, order = c(1,0,1) ) )
 }
+
+set.seed(123)
+for(i in 1:10){
+  X = arima.sim( model = list( ar = .9, ma = .5 ), n = 200 )
+  print( arima(X, order = c(1,0,1) ) )
+}
