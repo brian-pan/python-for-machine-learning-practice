@@ -255,3 +255,10 @@ fit_lm$coef[1]
 # sigma_w^2
 fit_yw$var.pred  
 sigma(fit_lm)^2
+
+## (b)
+# from fit_yw$asy.var.coef 
+fit_yw$asy.var.coef %>% diag() %>% sqrt()
+
+# from summary(fit_lm)
+summary(fit_lm)$coef[-1,2]
