@@ -278,3 +278,27 @@ for(i in 1:10){
   X = arima.sim( model = list( ar = .9, ma = .5 ), n = 200 )
   print( arima(X, order = c(1,0,1) ) )
 }
+
+
+
+library(astsa)
+gnpgr = diff(log(gnp)) # GNP growth rate
+sarima( gnpgr, 1, 0, 0)
+
+# Fit AR(1) 
+fit_ar = arima(gnpgr ,order=c(1,0,0)) 
+# or fit_ar = ar.mle(gnpgr ,order=1) 
+
+stdres = fit_ar$residuals / sqrt(fit_ar$sigma2)
+
+layout( matrix( c(1,1,2,3,4,4), 3, 2, byrow = TRUE) )
+
+plot(stdres) # residual plot
+qqnorm(stdres); qqline(stdres) # normal QQ-plot
+acf(stdres) # residual ACF
+# Ljung-Box test (H=20) 
+lags=3:20; p.values=rep(0,length(lags))
+for(i in 1:length(lags)){
+  p.values[i]=Box.test(stdres, lags[i], type = "Ljung-Box", fitdf = 2)$p.value
+}
+plot(lags, p.values, ylim=c(0,1), main="Ljung-Box p-values"); abline(h=.05, lty=2)
