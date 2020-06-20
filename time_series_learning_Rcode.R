@@ -262,3 +262,13 @@ fit_yw$asy.var.coef %>% diag() %>% sqrt()
 
 # from summary(fit_lm)
 summary(fit_lm)$coef[-1,2]
+
+
+
+set.seed(123)
+for(i in 1:5){
+  X = arima.sim( model = list( ar = .9, ma = -.9 ), n = 200 )
+  layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+  plot(X); acf(X); pacf(X)
+  print( arima(X, order = c(1,0,1) ) )
+}
