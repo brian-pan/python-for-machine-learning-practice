@@ -329,3 +329,11 @@ sarima.for(globtemp, 1,1,3, n.ahead = 10)
 
 plot( ARMAacf(ar = c(rep(0,11), .9), ma = .5, lag.max = 90 ),
       type = 'h', lwd = 2, ylab = "ACF", xlab = "lag" )
+
+plot(chicken)
+acf2(chicken)
+plot(diff(chicken))
+acf2(diff(chicken))
+library(forecast)
+auto.arima(chicken)
+sarima.for(chicken, 2,1,1,0,0,1,12, n.ahead = 12)
