@@ -337,3 +337,12 @@ acf2(diff(chicken))
 library(forecast)
 auto.arima(chicken)
 sarima.for(chicken, 2,1,1,0,0,1,12, n.ahead = 12)
+
+ljj = log(jj)
+plot( cbind(jj,ljj), type = 'o', pch = 20)
+auto.arima( ljj)
+
+sarima(ljj,2,0,0,1,1,0,4) # fit w/ sarima for diagnostics 
+
+# log-scale forecasts 
+log_forecasts = sarima.for( ljj, 2,0,0,1,1,0,4, n.ahead = 12 )
