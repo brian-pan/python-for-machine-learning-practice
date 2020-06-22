@@ -346,3 +346,9 @@ sarima(ljj,2,0,0,1,1,0,4) # fit w/ sarima for diagnostics
 
 # log-scale forecasts 
 log_forecasts = sarima.for( ljj, 2,0,0,1,1,0,4, n.ahead = 12 )
+
+# Original scale forecasts
+log_upper = log_forecasts$pred + 1.96 * log_forecasts$se
+log_lower = log_forecasts$pred - 1.96 * log_forecasts$se
+U = exp( log_upper )
+L = exp( log_lower )
