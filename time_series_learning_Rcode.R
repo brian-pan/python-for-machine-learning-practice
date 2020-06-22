@@ -352,3 +352,9 @@ log_upper = log_forecasts$pred + 1.96 * log_forecasts$se
 log_lower = log_forecasts$pred - 1.96 * log_forecasts$se
 U = exp( log_upper )
 L = exp( log_lower )
+
+plot(jj, xlim = c(1960,1984), ylim = c(0,35), type = 'o', main = "Original Scale")
+lines( exp( log_forecasts$pred ), col = 2, type = 'o' )
+xx = c(time(U), rev(time(U)))
+yy = c(L, rev(U))
+polygon(xx, yy, border = 8, col = gray(0.6, alpha = 0.2))
