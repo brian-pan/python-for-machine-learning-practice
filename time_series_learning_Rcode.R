@@ -367,3 +367,9 @@ acf2(sales)
 tseries::adf.test(sales) # ADF test doesn't reject RW
 plot(diff(sales))
 acf2(diff(sales))
+
+library(forecast)
+auto.arima(sales)
+library(astsa)
+sarima( sales, p = 1, d = 1, q = 1 , details = F )
+ccf( diff(sales), diff(lead) )
