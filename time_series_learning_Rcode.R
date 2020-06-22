@@ -373,3 +373,10 @@ auto.arima(sales)
 library(astsa)
 sarima( sales, p = 1, d = 1, q = 1 , details = F )
 ccf( diff(sales), diff(lead) )
+
+lag2.plot( diff(lead), diff(sales), max.lag = 5 )
+
+# combine sales with lagged lead data
+sales_lead = ts.intersect( sales = sales, lead.l3 = lag(lead, -3) ) 
+# Use auto.arima for order selection
+auto.arima( sales_lead[,1], xreg = sales_lead[,2] )
