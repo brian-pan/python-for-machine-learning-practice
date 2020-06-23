@@ -302,3 +302,17 @@ for(i in 1:length(lags)){
   p.values[i]=Box.test(stdres, lags[i], type = "Ljung-Box", fitdf = 2)$p.value
 }
 plot(lags, p.values, ylim=c(0,1), main="Ljung-Box p-values"); abline(h=.05, lty=2)
+
+
+#7
+library(astsa)
+plot(globtemp)
+astsa::acf2(globtemp) # neat ACF/PACF wrapper (Note: ACF starts @ 1)
+
+# RW-type behavior, perform a unit-root test:
+library(tseries)
+adf.test(globtemp)
+acf2(diff(globtemp))
+
+(out_AR3 = sarima(globtemp, 3,1,0))
+(out_MA4 = sarima(globtemp, 0,1,4))
