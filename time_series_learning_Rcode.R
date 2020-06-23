@@ -398,3 +398,10 @@ plot(res)
 acf2(res)
 sarima( lcpg, p = 1, d = 0, q = 0, xreg = time(lcpg), details = F)
 sarima( lcpg, p = 0, d = 0, q = 0, xreg = time(lcpg), details = F)
+
+
+mort = ts.intersect( M = cmort, tm = time(cmort),
+                     T.dm = tempr - mean(tempr),
+                     T.dm2 = (tempr - mean(tempr))^2,
+                     P = part,
+                     P.l4 = lag(part, 4) )
