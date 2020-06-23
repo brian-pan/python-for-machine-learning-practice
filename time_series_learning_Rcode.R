@@ -407,3 +407,6 @@ mort = ts.intersect( M = cmort, tm = time(cmort),
                      P.l4 = lag(part, 4) )
 out_lm = sarima( mort[,1], 0, 0, 0, xreg = mort[, 2:6], details = F)
 pacf(out_lm$fit$residuals)
+
+out_ar2 = sarima( mort[,1], 2, 0, 0, xreg = mort[, 2:6], details = F )
+auto.arima( mort[,1], xreg = mort[, 2:6] ) 
