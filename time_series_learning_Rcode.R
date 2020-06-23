@@ -405,3 +405,5 @@ mort = ts.intersect( M = cmort, tm = time(cmort),
                      T.dm2 = (tempr - mean(tempr))^2,
                      P = part,
                      P.l4 = lag(part, 4) )
+out_lm = sarima( mort[,1], 0, 0, 0, xreg = mort[, 2:6], details = F)
+pacf(out_lm$fit$residuals)
