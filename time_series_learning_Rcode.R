@@ -410,3 +410,6 @@ pacf(out_lm$fit$residuals)
 
 out_ar2 = sarima( mort[,1], 2, 0, 0, xreg = mort[, 2:6], details = F )
 auto.arima( mort[,1], xreg = mort[, 2:6] ) 
+
+out_lm$fit$coef
+out_ar2$fit$coef[-(1:2)]
