@@ -316,3 +316,16 @@ acf2(diff(globtemp))
 
 (out_AR3 = sarima(globtemp, 3,1,0))
 (out_MA4 = sarima(globtemp, 0,1,4))
+
+sarima.for(globtemp, 3,1,0, n.ahead = 10)  
+out_AR3$fit$coef["constant"] 
+
+out_auto = forecast::auto.arima(globtemp)
+AIC(out_auto)
+AIC(out_AR3$fit)  
+
+sarima(globtemp, 1,1,3)
+sarima.for(globtemp, 1,1,3, n.ahead = 10)
+
+plot( ARMAacf(ar = c(rep(0,11), .9), ma = .5, lag.max = 90 ),
+      type = 'h', lwd = 2, ylab = "ACF", xlab = "lag" )
