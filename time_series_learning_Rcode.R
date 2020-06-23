@@ -379,4 +379,11 @@ lag2.plot( diff(lead), diff(sales), max.lag = 5 )
 # combine sales with lagged lead data
 sales_lead = ts.intersect( sales = sales, lead.l3 = lag(lead, -3) ) 
 # Use auto.arima for order selection
-auto.arima( sales_lead[,1], xreg = sales_lead[,2] )
+auto.arima( sales_lead[,1], xreg = sales_lead[,2] ) #auto.arima selects regression with ARIMA(1,1,0) errors
+
+# Double-check by fitting regression on differenced series
+tmp = lm( diff(sales) ~ diff(lead.l3), data = sales_lead)
+plot( ts(tmp$res) )
+acf2( ts(tmp$res) )
+sarima( sales_lead[,1], p = 1, d = 1, q = 0, xreg = sales_lead[,2], details = F )
+sarima( sales_lead[,1], p = 1, d = 1, q = 1, details = F )
