@@ -358,3 +358,12 @@ lines( exp( log_forecasts$pred ), col = 2, type = 'o' )
 xx = c(time(U), rev(time(U)))
 yy = c(L, rev(U))
 polygon(xx, yy, border = 8, col = gray(0.6, alpha = 0.2))
+
+
+#8
+library(astsa)
+plot(sales)
+acf2(sales)
+tseries::adf.test(sales) # ADF test doesn't reject RW
+plot(diff(sales))
+acf2(diff(sales))
