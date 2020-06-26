@@ -428,3 +428,5 @@ out.P = arima(P., seasonal = list( order = c(0,1,1), period = 12) )
 out.I = arima(P., seasonal = list( order = c(0,1,1), period = 12) )
 
 out.P
+
+P.prw = resid(out.P)
