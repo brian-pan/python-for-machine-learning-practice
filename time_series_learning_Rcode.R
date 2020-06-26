@@ -413,3 +413,18 @@ auto.arima( mort[,1], xreg = mort[, 2:6] )
 
 out_lm$fit$coef
 out_ar2$fit$coef[-(1:2)]
+
+
+#9
+library(astsa)
+library(magrittr)
+
+P. = sqrt( climhyd[,"Precip"] ) %>% ts(freq = 12)
+I. = log( climhyd[,"Inflow"] ) %>% ts(freq=12) 
+
+plot(cbind(P.,I.))
+
+out.P = arima(P., seasonal = list( order = c(0,1,1), period = 12) )
+out.I = arima(P., seasonal = list( order = c(0,1,1), period = 12) )
+
+out.P
