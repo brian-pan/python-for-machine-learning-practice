@@ -436,3 +436,15 @@ I.flt = Arima(I., model = out.P ) %>% resid()
 plot(I.flt)
 acf(I.flt)
 ccf(I.flt, P.prw)
+
+library(tidyverse)
+## create time series objects
+X = econ5 %>% 
+  dplyr::select(unemp, gnp, consum) %>% 
+  mutate_all( log ) %>% 
+  ts( start = c(1948, 3), freq = 4)
+
+library(vars)
+VARselect(X, type = "both", lag.max = 10)  # type = "both" for const & trend
+out = VAR(X, type = "both", ic = "AIC", lag.max = 10)  
+out 
