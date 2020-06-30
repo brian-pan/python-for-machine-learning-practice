@@ -448,3 +448,10 @@ library(vars)
 VARselect(X, type = "both", lag.max = 10)  # type = "both" for const & trend
 out = VAR(X, type = "both", ic = "AIC", lag.max = 10)  
 out 
+
+# get residuals 
+res = resid(out) %>% ts( start = c(1948, 3), freq = 4)
+# Residual plot
+plot(res)
+# Residual ACF/CCF plots
+acf(res)
