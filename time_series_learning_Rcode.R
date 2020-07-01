@@ -455,3 +455,11 @@ res = resid(out) %>% ts( start = c(1948, 3), freq = 4)
 plot(res)
 # Residual ACF/CCF plots
 acf(res)
+
+# Normal QQ-plots
+par(mfrow = c(2,2))
+qqnorm(res[,"unemp"]); qqline(res[,"unemp"])
+qqnorm(res[,"gnp"]); qqline(res[,"gnp"])
+qqnorm(res[,"consum"]); qqline(res[,"consum"])
+
+out %>% predict(n.ahead = 20) %>% plot()
