@@ -463,3 +463,10 @@ qqnorm(res[,"gnp"]); qqline(res[,"gnp"])
 qqnorm(res[,"consum"]); qqline(res[,"consum"])
 
 out %>% predict(n.ahead = 20) %>% plot()
+
+
+#10
+n = 100;
+X = cumsum( rnorm(n) )
+Y = cumsum( rnorm(n) )
+summary( lm(Y~X) )
