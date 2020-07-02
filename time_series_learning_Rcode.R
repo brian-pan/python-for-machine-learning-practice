@@ -481,3 +481,12 @@ for(i in 1:N){
   beta[i] = (lm(Y~X))$coef[2]
 }
 hist(beta)
+
+n=10000
+beta = rep(0,N)
+for(i in 1:N){
+  X = cumsum(rnorm(n))
+  Y = cumsum(rnorm(n))
+  beta[i] = (lm(Y~X))$coef[2]
+}
+hist(beta)
