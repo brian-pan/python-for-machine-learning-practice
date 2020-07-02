@@ -508,3 +508,10 @@ for(i in 1:N){
   beta[i] = (lm(W~X))$coef[2]
 }
 hist(beta)
+
+
+library(astsa)
+library(vars)
+X = cbind(rec, soi)
+out = VAR(X, ic = "AIC", lag.max = 20)
+summary(out)
