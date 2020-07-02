@@ -515,3 +515,11 @@ library(vars)
 X = cbind(rec, soi)
 out = VAR(X, ic = "AIC", lag.max = 20)
 summary(out)
+
+# below are some diagnostics tests for VAR models
+normality.test(out) # rejects normalitys
+serial.test(out) # rejects normality
+causality(out, cause = "soi")
+plot(
+  irf(out, impulse = "soi", response = "rec", n.ahead = 36)
+)
