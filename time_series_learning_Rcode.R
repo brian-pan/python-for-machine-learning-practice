@@ -530,3 +530,9 @@ head(R)
 lR = log(R[,1:2])
 plot(lR[,1:2])
 acf(lR)
+
+library(tseries)
+adf.test(lR[,1])
+adf.test(lR[,2])
+dlR = lR[,1]-lR[,2]
+plot(dlR)
