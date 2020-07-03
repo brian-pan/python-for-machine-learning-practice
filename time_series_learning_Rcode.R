@@ -523,3 +523,10 @@ causality(out, cause = "soi")
 plot(
   irf(out, impulse = "soi", response = "rec", n.ahead = 36)
 )
+
+# load data
+load("yields.RData")
+head(R)
+lR = log(R[,1:2])
+plot(lR[,1:2])
+acf(lR)
