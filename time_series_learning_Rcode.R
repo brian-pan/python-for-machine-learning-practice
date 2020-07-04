@@ -559,3 +559,7 @@ acf2(oil.r)
 # squared series
 plot(oil.r^2)
 acf2(oil.r^2)
+
+library(fGarch)
+out = garchFit( ~ arma(1,1) + garch(1,1), oil.r, trace = F )
+summary(out)
