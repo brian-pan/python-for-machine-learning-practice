@@ -545,3 +545,17 @@ summary(out.coint)
 
 cajorls( out.coint, r = 1 )
 vec2var( out.coint, r = 1 )
+
+
+#11
+## SS 5.6
+library(astsa)
+oil.r = diff(log(oil)) # cont. comp. return
+
+# original series
+plot(oil.r)
+acf2(oil.r) 
+
+# squared series
+plot(oil.r^2)
+acf2(oil.r^2)
