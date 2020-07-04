@@ -571,3 +571,11 @@ acf2(R)
 acf2(R^2)
 
 predict(out, n.ahead = 10, plot = T, nx = 40)
+
+## SS 5.7
+plot(EuStockMarkets)
+dax.r = diff( log( EuStockMarkets[,"DAX"] ) )
+plot(dax.r)
+acf2(dax.r, max.lag = 50)
+plot(dax.r^2)
+acf2(dax.r^2, max.lag = 50)
