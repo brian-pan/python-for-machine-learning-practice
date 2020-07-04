@@ -563,3 +563,11 @@ acf2(oil.r^2)
 library(fGarch)
 out = garchFit( ~ arma(1,1) + garch(1,1), oil.r, trace = F )
 summary(out)
+
+R = residuals(out, standardize = T)
+qqnorm(R)
+qqline(R)
+acf2(R)
+acf2(R^2)
+
+predict(out, n.ahead = 10, plot = T, nx = 40)
