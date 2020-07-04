@@ -542,3 +542,6 @@ adf.test(dlR[1:575])
 # look data up to 2007
 out.coint = ca.jo(lR[1:575,], ecdet = "const", K=3 )
 summary(out.coint)
+
+cajorls( out.coint, r = 1 )
+vec2var( out.coint, r = 1 )
