@@ -536,3 +536,9 @@ adf.test(lR[,1])
 adf.test(lR[,2])
 dlR = lR[,1]-lR[,2]
 plot(dlR)
+
+adf.test(dlR)
+adf.test(dlR[1:575])
+# look data up to 2007
+out.coint = ca.jo(lR[1:575,], ecdet = "const", K=3 )
+summary(out.coint)
