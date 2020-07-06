@@ -579,3 +579,13 @@ plot(dax.r)
 acf2(dax.r, max.lag = 50)
 plot(dax.r^2)
 acf2(dax.r^2, max.lag = 50)
+
+library(magrittr)
+garchFit( ~garch(2,0), dax.r, trace = F) %>% summary()
+
+out = garchFit( ~garch(4,1), dax.r, trace = F) 
+summary(out) 
+R = residuals(out, standardize = T)
+qqnorm(R); qqline(R)
+acf2(R, max.lag = 50)
+acf2(R^2, max.lag = 50)
