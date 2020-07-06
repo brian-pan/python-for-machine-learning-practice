@@ -589,3 +589,10 @@ R = residuals(out, standardize = T)
 qqnorm(R); qqline(R)
 acf2(R, max.lag = 50)
 acf2(R^2, max.lag = 50)
+
+# Get daily S&P TSX composite index adjusted closing prices
+tsx = tseries::get.hist.quote(instrument = "^gsptse", quote = "Adjusted", compression = "d",
+                              start = "2016-01-01", end = "2020-01-01") 
+# note that tsx is an irregularly spaced series (b/c trading does not occur on every day)
+# to see the missing dates, try 
+head(as.ts(tsx), 10)
