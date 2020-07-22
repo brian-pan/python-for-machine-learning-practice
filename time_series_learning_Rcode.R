@@ -596,3 +596,8 @@ tsx = tseries::get.hist.quote(instrument = "^gsptse", quote = "Adjusted", compre
 # note that tsx is an irregularly spaced series (b/c trading does not occur on every day)
 # to see the missing dates, try 
 head(as.ts(tsx), 10)
+
+# Calculate returns
+rtsx = quantmod::Delt(tsx) 
+
+plot(rtsx)
