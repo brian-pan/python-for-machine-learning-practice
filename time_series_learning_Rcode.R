@@ -604,3 +604,9 @@ plot(rtsx)
 
 acf2(rtsx)
 acf2(rtsx^2)
+
+lags = 5:35; p.value = rep(0, length(lags))
+for(i in lags){
+  p.value[i + 1 - lags[1]] = Box.test(rtsx, lag = i, type = "Ljung-Box")$p.value
+}
+plot(lags, p.value, main = "Ljung-Box Test"); abline(h=.05)
