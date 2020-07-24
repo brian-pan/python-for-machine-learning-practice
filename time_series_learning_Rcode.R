@@ -601,3 +601,6 @@ head(as.ts(tsx), 10)
 rtsx = quantmod::Delt(tsx) 
 
 plot(rtsx)
+
+acf2(rtsx)
+acf2(rtsx^2)
