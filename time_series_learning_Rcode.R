@@ -610,3 +610,6 @@ for(i in lags){
   p.value[i + 1 - lags[1]] = Box.test(rtsx, lag = i, type = "Ljung-Box")$p.value
 }
 plot(lags, p.value, main = "Ljung-Box Test"); abline(h=.05)
+
+out = garchFit( ~garch(1,1), na.omit(rtsx), trace = F)
+summary(out)
