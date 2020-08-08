@@ -613,3 +613,9 @@ plot(lags, p.value, main = "Ljung-Box Test"); abline(h=.05)
 
 out = garchFit( ~garch(1,1), na.omit(rtsx), trace = F)
 summary(out)
+
+
+R = residuals(out, standardize = T)
+qqnorm(R); qqline(R)
+acf2(R)
+acf2(R^2)
