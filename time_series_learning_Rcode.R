@@ -625,3 +625,12 @@ tsx = tseries::get.hist.quote(instrument = "^gsptse", quote = "Adjusted",
                               compression = "d", start = "2020-01-01") 
 rtsx2 = quantmod::Delt(tsx) 
 plot(rtsx2)
+
+
+
+acf2(rtsx2)
+acf2(rtsx2^2)
+plot( window( rtsx2, start = "2020-03-1", end = "2020-03-31"), type = 'o' )
+out2 = garchFit( ~ arma(0,1) + garch(1,1), na.omit(rtsx2), trace = F )
+summary(out2)
+predict(out2, n.ahead = 30, plot = T, nx = 50)
