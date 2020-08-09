@@ -619,3 +619,9 @@ R = residuals(out, standardize = T)
 qqnorm(R); qqline(R)
 acf2(R)
 acf2(R^2)
+
+predict(out, n.ahead = 30, plot = T, nx = 50)
+tsx = tseries::get.hist.quote(instrument = "^gsptse", quote = "Adjusted", 
+                              compression = "d", start = "2020-01-01") 
+rtsx2 = quantmod::Delt(tsx) 
+plot(rtsx2)
