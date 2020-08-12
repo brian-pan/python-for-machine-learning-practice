@@ -20,3 +20,7 @@ lines( h, (n-h) * (n-h+1) / n / 2, col = 2 )
 lines( h, colMeans(acf.mat) + 2*apply(acf.mat, 2, sd) / sqrt(N), col = 3)
 lines( h, colMeans(acf.mat) - 2*apply(acf.mat, 2, sd) / sqrt(N), col = 3)
 legend( "topright", legend = c("theoretical", "95% CI"), col = 2:3, lwd=2 )
+
+layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+plot(tourists)
+acf(tourists, 60); pacf(tourists, 60)
