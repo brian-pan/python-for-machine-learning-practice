@@ -24,3 +24,6 @@ legend( "topright", legend = c("theoretical", "95% CI"), col = 2:3, lwd=2 )
 layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
 plot(tourists)
 acf(tourists, 60); pacf(tourists, 60)
+
+d12tourists = diff(tourists, lag = 12)
+acf(d12tourists, 60); pacf(d12tourists, 60)
