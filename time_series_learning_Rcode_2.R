@@ -27,3 +27,13 @@ acf(tourists, 60); pacf(tourists, 60)
 
 d12tourists = diff(tourists, lag = 12)
 acf(d12tourists, 60); pacf(d12tourists, 60)
+
+out = arima( tourists, order = c(3,0,1), seasonal = list( order = c(0,1,2), period = 12 ) ) # excludes mean
+
+# alternatively, can use forecast::Arima
+library(forecast)
+out2 = Arima( tourists, order = c(3,0,1), seasonal = list( order = c(0,1,2), period = 12 ), include.drift = T ) # includes mean
+
+# or astsa::sarima()
+library(astsa)
+out3 = sarima( tourists, 3,0,1, 0,1,2, 12, details = F ) # includes mean
