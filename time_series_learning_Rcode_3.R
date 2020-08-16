@@ -1,0 +1,8 @@
+library(astsa)
+library(fGarch)
+library(magrittr)
+library(tidyverse)
+library(vars)
+library(forecast)
+library(Metrics)
+library(tseries)
