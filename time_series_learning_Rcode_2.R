@@ -41,3 +41,10 @@ out3 = sarima( tourists, 3,0,1, 0,1,2, 12, details = F ) # includes mean
 mean( abs( out$residuals ) )
 summary(out2)
 mean( abs(out3$fit$residuals) )
+
+plot( out$residuals )
+acf(out$residuals)
+qqnorm(out$residuals); qqline(out$residuals)
+
+# astsa::sarima plots diagnostics by default
+sarima( tourists, 3,0,1, 0,1,2, 12 )
