@@ -37,3 +37,7 @@ out2 = Arima( tourists, order = c(3,0,1), seasonal = list( order = c(0,1,2), per
 # or astsa::sarima()
 library(astsa)
 out3 = sarima( tourists, 3,0,1, 0,1,2, 12, details = F ) # includes mean
+
+mean( abs( out$residuals ) )
+summary(out2)
+mean( abs(out3$fit$residuals) )
