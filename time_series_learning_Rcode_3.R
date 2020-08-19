@@ -21,3 +21,6 @@ library(forecast)
 trend_ua = ma(ua, order = 12, centre = T)
 plot(ua)
 lines(trend_ua, col="red")
+
+# get detrended data:
+detrend_ua = ua/trend_ua
