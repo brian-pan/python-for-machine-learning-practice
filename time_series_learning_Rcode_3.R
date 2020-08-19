@@ -15,3 +15,9 @@ ua = get_cansim_vector( "v2057814", start_time = "1980-01-01", end_time = "1999-
 plot(ua)
 acf(ua)
 pacf(ua)
+
+# apply the 12-point MA to the original series:
+library(forecast)
+trend_ua = ma(ua, order = 12, centre = T)
+plot(ua)
+lines(trend_ua, col="red")
