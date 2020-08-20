@@ -30,3 +30,5 @@ seasonal_ua = colMeans(mat_ua, na.rm = TRUE)
 mean(seasonal_ua)
 plot(as.ts(rep(seasonal_ua,20)), ylab="")
 abline(h=mean(seasonal_ua), col="red")
+
+random_ua = ua / (trend_ua*seasonal_ua)
