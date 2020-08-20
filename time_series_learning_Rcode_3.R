@@ -24,3 +24,9 @@ lines(trend_ua, col="red")
 
 # get detrended data:
 detrend_ua = ua/trend_ua
+
+mat_ua = t(matrix(data = detrend_ua, nrow = 12))
+seasonal_ua = colMeans(mat_ua, na.rm = TRUE)
+mean(seasonal_ua)
+plot(as.ts(rep(seasonal_ua,20)), ylab="")
+abline(h=mean(seasonal_ua), col="red")
