@@ -32,3 +32,13 @@ plot(as.ts(rep(seasonal_ua,20)), ylab="")
 abline(h=mean(seasonal_ua), col="red")
 
 random_ua = ua / (trend_ua*seasonal_ua)
+
+# combine all terms and rename them
+observed = ua
+trend = trend_ua
+seasonal = rep(seasonal_ua,20)
+random = random_ua
+# plot the renamed terms
+plot(cbind(observed, trend, seasonal, random),
+     main = "multiplicative time series decomposition",
+     xlab = "Years")
