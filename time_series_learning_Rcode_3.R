@@ -75,3 +75,14 @@ autoplot(ua, series="Original Data") +
   scale_colour_manual(values = c("grey", "blue", "red"))
 x11_method = seasadj(fit_1)
 r_X11 = remainder(fit_1)
+
+# seats method:
+ua %>% seas() -> fit_2
+autoplot(ua, series="Original Data") + 
+  autolayer(seasadj(fit_2), series="Seats Seasonally Adjusted") +
+  autolayer(sc_adj_data, series = "StaCan Seasonally Adjusted") +
+  xlab("Year") + ylab("data without seasonality") +
+  ggtitle("Comparation of Seats method with StaCan's method") +
+  scale_colour_manual(values = c("grey", "red", "blue"))
+seats_method = seasadj(fit_2)
+r_Seats = remainder(fit_2)
