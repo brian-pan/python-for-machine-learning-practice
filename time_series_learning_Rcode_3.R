@@ -56,3 +56,6 @@ adj_data = ua / seasonal_ua_2
 # two adjusted data plots:
 plot(sc_adj_data, col = "blue")
 lines(adj_data, col="red")
+# find Mae:
+library(Metrics)
+mae(sc_adj_data, adj_data)
