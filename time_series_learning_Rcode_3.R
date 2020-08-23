@@ -59,3 +59,8 @@ lines(adj_data, col="red")
 # find Mae:
 library(Metrics)
 mae(sc_adj_data, adj_data)
+
+
+##Q4
+library(seasonal)
+library(ggplot2)
