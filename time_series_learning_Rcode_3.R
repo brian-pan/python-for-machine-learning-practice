@@ -49,3 +49,7 @@ plot(cbind(observed, trend, seasonal, random),
 sc_adj_data = get_cansim_vector( "v2057605", start_time = "1980-01-01", end_time = "1999-12-01") %>%
   pull(VALUE) %>% 
   ts( start = c(1980,1), frequency = 12)
+# make unadjusted data (ua) to be seaonally adjusted:
+mat_ua_2 = t(matrix(data = detrend_ua, nrow = 12))
+seasonal_ua_2 = colMeans(mat_ua_2, na.rm = TRUE)
+adj_data = ua / seasonal_ua_2
