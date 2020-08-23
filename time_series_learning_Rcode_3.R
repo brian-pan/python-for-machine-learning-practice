@@ -64,3 +64,14 @@ mae(sc_adj_data, adj_data)
 ##Q4
 library(seasonal)
 library(ggplot2)
+
+# X11 method:
+ua %>% seas(x11="") -> fit_1
+autoplot(ua, series="Original Data") + 
+  autolayer(seasadj(fit_1), series="X11 Seasonally Adjusted") +
+  autolayer(sc_adj_data, series = "StaCan Seasonally Adjusted") +
+  xlab("Year") + ylab("data without seasonality") +
+  ggtitle("Comparation of X11 method with StaCan's method") +
+  scale_colour_manual(values = c("grey", "blue", "red"))
+x11_method = seasadj(fit_1)
+r_X11 = remainder(fit_1)
