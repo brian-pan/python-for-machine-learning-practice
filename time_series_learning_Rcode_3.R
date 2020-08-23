@@ -42,3 +42,10 @@ random = random_ua
 plot(cbind(observed, trend, seasonal, random),
      main = "multiplicative time series decomposition",
      xlab = "Years")
+
+
+## Q3
+# get StatCan's adjusted data:
+sc_adj_data = get_cansim_vector( "v2057605", start_time = "1980-01-01", end_time = "1999-12-01") %>%
+  pull(VALUE) %>% 
+  ts( start = c(1980,1), frequency = 12)
