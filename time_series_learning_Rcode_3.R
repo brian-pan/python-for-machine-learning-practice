@@ -86,3 +86,14 @@ autoplot(ua, series="Original Data") +
   scale_colour_manual(values = c("grey", "red", "blue"))
 seats_method = seasadj(fit_2)
 r_Seats = remainder(fit_2)
+
+# STL method:
+log(ua) %>% stl(t.window=13, s.window="periodic", robust=TRUE)-> fit_3
+autoplot(ua, series="Original Data") + 
+  autolayer(exp(seasadj(fit_3)), series="STL Seasonally Adjusted") +
+  autolayer(sc_adj_data, series = "StaCan Seasonally Adjusted") +
+  xlab("Year") + ylab("data without seasonality") +
+  ggtitle("Comparation of STL method with StaCan's method") +
+  scale_colour_manual(values = c("grey", "blue", "red"))
+STL_method = exp(seasadj(fit_3))
+r_STL = remainder(fit_3)
