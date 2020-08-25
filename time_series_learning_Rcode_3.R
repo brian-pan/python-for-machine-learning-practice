@@ -123,3 +123,9 @@ plot(r_X11)
 acf(na.omit(r_X11))
 pacf(na.omit(r_X11))
 auto.arima(r_X11)
+
+# using unadjusted data with STL method:
+plot(r_Seats)
+acf(r_Seats)
+pacf(r_Seats)
+auto.arima(r_Seats)
