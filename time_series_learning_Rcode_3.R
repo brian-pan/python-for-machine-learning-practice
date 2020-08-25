@@ -97,3 +97,8 @@ autoplot(ua, series="Original Data") +
   scale_colour_manual(values = c("grey", "blue", "red"))
 STL_method = exp(seasadj(fit_3))
 r_STL = remainder(fit_3)
+
+library(Metrics)
+mae(x11_method,sc_adj_data)
+mae(seats_method,sc_adj_data)
+mae(STL_method,sc_adj_data)
