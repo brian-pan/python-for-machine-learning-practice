@@ -111,3 +111,9 @@ autoplot(ua, series="Original Data") +
   xlab("Year") + ylab("data without seasonality") +
   ggtitle("Comparation of all 3 methods with StaCan's method") +
   scale_colour_manual(values = c("light grey", "blue", "grey", "light blue", "red"))
+
+# using unadjusted data:
+plot(random_ua)
+acf(na.omit(random_ua))
+pacf(na.omit(random_ua))
+auto.arima(random_ua)
