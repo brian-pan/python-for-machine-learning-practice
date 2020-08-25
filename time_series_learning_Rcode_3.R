@@ -117,3 +117,9 @@ plot(random_ua)
 acf(na.omit(random_ua))
 pacf(na.omit(random_ua))
 auto.arima(random_ua)
+
+# using unadjusted data with X11 method:
+plot(r_X11)
+acf(na.omit(r_X11))
+pacf(na.omit(r_X11))
+auto.arima(r_X11)
