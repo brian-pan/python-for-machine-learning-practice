@@ -102,3 +102,9 @@ library(Metrics)
 mae(x11_method,sc_adj_data)
 mae(seats_method,sc_adj_data)
 mae(STL_method,sc_adj_data)
+
+autoplot(ua, series="Original Data") + 
+  autolayer(seasadj(fit_1), series="X11 Seasonally Adjusted") +
+  autolayer(seasadj(fit_2), series="Seats Seasonally Adjusted") +
+  autolayer(exp(seasadj(fit_3)), series="STL Seasonally Adjusted") +
+  autolayer(sc_adj_data, series = "StaCan Seasonally Adjusted")
