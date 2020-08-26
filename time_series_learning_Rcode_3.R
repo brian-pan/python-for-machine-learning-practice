@@ -129,3 +129,11 @@ plot(r_Seats)
 acf(r_Seats)
 pacf(r_Seats)
 auto.arima(r_Seats)
+
+# using StaCan's seasonally adjusted data:
+sc_adj_data = get_cansim_vector( "v2057605", start_time = "1980-01-01", end_time = "1999-12-01") %>%
+  pull(VALUE) %>% 
+  ts( start = c(1980,1), frequency = 12)
+library(forecast)
+trend_sc = ma(sc_adj_data, order = 12, centre = T)
+random_sc = sc_adj_data/trend_sc
