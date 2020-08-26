@@ -137,3 +137,8 @@ sc_adj_data = get_cansim_vector( "v2057605", start_time = "1980-01-01", end_time
 library(forecast)
 trend_sc = ma(sc_adj_data, order = 12, centre = T)
 random_sc = sc_adj_data/trend_sc
+
+plot(random_sc)
+acf(na.omit(random_sc))
+pacf(na.omit(random_sc))
+auto.arima(random_sc)
