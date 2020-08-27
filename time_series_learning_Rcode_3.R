@@ -155,3 +155,8 @@ library(vars)
 library(forecast)
 library(Metrics)
 library(tseries)
+
+n=5000
+ma = arima.sim(model=list(ma=.5),n)
+plot(ma)
+acf2(ma)
