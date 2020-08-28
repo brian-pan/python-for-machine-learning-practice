@@ -160,3 +160,6 @@ n=5000
 ma = arima.sim(model=list(ma=.5),n)
 plot(ma)
 acf2(ma)
+ma2=ma^2
+plot(ma2)
+acf2(ma2)
