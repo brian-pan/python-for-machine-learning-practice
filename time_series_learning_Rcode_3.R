@@ -163,3 +163,10 @@ acf2(ma)
 ma2=ma^2
 plot(ma2)
 acf2(ma2)
+
+load("100*******.Rdata")
+emp=X[,1]
+gdp=X[,2]
+plot(cbind(emp,gdp))
+acf2(emp)
+acf2(gdp)
