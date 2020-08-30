@@ -170,3 +170,8 @@ gdp=X[,2]
 plot(cbind(emp,gdp))
 acf2(emp)
 acf2(gdp)
+
+library(seasonal)
+emp %>% seas(x11="") -> fit_1
+autoplot(emp, series="Original Data") + 
+  autolayer(seasadj(fit_1), series="X11 Seasonally Adjusted")
