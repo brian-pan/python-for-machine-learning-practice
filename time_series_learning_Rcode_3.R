@@ -175,3 +175,10 @@ library(seasonal)
 emp %>% seas(x11="") -> fit_1
 autoplot(emp, series="Original Data") + 
   autolayer(seasadj(fit_1), series="X11 Seasonally Adjusted")
+
+gdpfit=auto.arima(gdp,ic="aic")
+gdpfit
+gdpres=gdpfit$residuals
+gdpdc=decompose(gdp)
+gdpresdc=na.omit(gdpdc$random)
+mae(gdpres,gdpresdc)
