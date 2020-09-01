@@ -182,3 +182,8 @@ gdpres=gdpfit$residuals
 gdpdc=decompose(gdp)
 gdpresdc=na.omit(gdpdc$random)
 mae(gdpres,gdpresdc)
+
+plot(gdpfit$residuals)
+acf(gdpfit$residuals)
+qqnorm(gdpfit$residuals)
+qqline(gdpfit$residuals)
