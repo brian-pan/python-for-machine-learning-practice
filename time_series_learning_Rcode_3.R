@@ -193,3 +193,7 @@ auto.arima(gdp, xreg=x11_method, ic="aic")
 reggdp=sarima(gdp, 0,1,1,2,0,0,12, xreg = x11_method)
 reggdp
 mae(gdpres,na.omit(reggdp$fit$residuals))
+
+
+knitr::opts_chunk$set(fig.width=12, fig.height=8) 
+knitr::opts_chunk$set(echo = TRUE)
