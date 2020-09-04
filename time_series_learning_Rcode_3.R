@@ -197,3 +197,6 @@ mae(gdpres,na.omit(reggdp$fit$residuals))
 
 knitr::opts_chunk$set(fig.width=12, fig.height=8) 
 knitr::opts_chunk$set(echo = TRUE)
+library(cansim)
+library(tidyverse)
+library(tseries)
