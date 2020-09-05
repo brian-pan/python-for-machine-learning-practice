@@ -221,3 +221,8 @@ mod1 = VAR(cbind(Yt,Xt),p=1)
 mod1
 mat = matrix(c(0.7320447,-9.927704e-05,294.173859,1.115757e+00),nrow = 2)
 eigen(mat)
+
+Xt = get_cansim_vector( "v41712939", start_time = "1977-01-01", end_time =
+                          "2016-12-01") %>%
+  pull(VALUE) %>% 
+  ts( start = c(1977,1), frequency = 1) 
