@@ -206,3 +206,8 @@ Xt = get_cansim_vector( "v41712939", start_time = "1977-01-01", end_time =
                           "2016-12-01") %>%
   pull(VALUE) %>% 
   ts( start = c(1977,1), frequency = 1) 
+# nominal GDP
+Yt = get_cansim_vector( "v41713160", start_time = "1977-01-01", end_time =
+                          "2016-12-01") %>%
+  pull(VALUE) %>% 
+  ts( start = c(1977,1), frequency = 1)
