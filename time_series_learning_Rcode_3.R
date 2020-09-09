@@ -214,3 +214,8 @@ Yt = get_cansim_vector( "v41713160", start_time = "1977-01-01", end_time =
 
 plot(Yt, ylab="nominal GDP", xlab="year")
 adf.test(Yt)
+
+# fit VAR(1) model:
+library(vars)
+mod1 = VAR(cbind(Yt,Xt),p=1)
+mod1
