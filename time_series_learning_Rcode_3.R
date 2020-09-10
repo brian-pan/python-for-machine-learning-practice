@@ -219,3 +219,5 @@ adf.test(Yt)
 library(vars)
 mod1 = VAR(cbind(Yt,Xt),p=1)
 mod1
+mat = matrix(c(0.7320447,-9.927704e-05,294.173859,1.115757e+00),nrow = 2)
+eigen(mat)
