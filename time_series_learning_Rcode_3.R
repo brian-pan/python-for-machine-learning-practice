@@ -233,3 +233,8 @@ Yt = get_cansim_vector( "v41713160", start_time = "1977-01-01", end_time =
 
 plot(Yt, ylab="nominal GDP", xlab="year")
 adf.test(Yt)
+
+Zt = get_cansim_vector( "v41712905", start_time = "1977-01-01", end_time =
+                          "2016-12-01") %>%
+  pull(VALUE) %>% 
+  ts( start = c(1977,1), frequency = 1) 
