@@ -238,3 +238,10 @@ Zt = get_cansim_vector( "v41712905", start_time = "1977-01-01", end_time =
                           "2016-12-01") %>%
   pull(VALUE) %>% 
   ts( start = c(1977,1), frequency = 1) 
+b=ts.intersect(Yt, y1=stats::lag(Yt,-1), x6=stats::lag(Xt,-6), z1=stats::lag(Zt,-1))
+forecast::auto.arima(b[,1],xreg = b[,2:4], ic="aic")
+# fit model
+mod3 <- arima(b[,1],order=c(0,1,2),xreg=b[,2:4])
+mod3
+res2 = mod3 %>% resid()
+Metrics::mape(Yt,res2)
