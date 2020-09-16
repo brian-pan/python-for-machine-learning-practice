@@ -142,3 +142,16 @@ plot(random_sc)
 acf(na.omit(random_sc))
 pacf(na.omit(random_sc))
 auto.arima(random_sc)
+
+
+
+
+
+library(astsa)
+library(fGarch)
+library(magrittr)
+library(tidyverse)
+library(vars)
+library(forecast)
+library(Metrics)
+library(tseries)
